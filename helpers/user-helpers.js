@@ -30,7 +30,7 @@ module.exports = {
             resolve(response)
           
           }else{
-            console.log("login failed");
+            console.log("login is failed");
             resolve({status:false})
 
           }
