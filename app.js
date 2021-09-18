@@ -6,6 +6,7 @@ var logger = require('morgan');
 var hbs=require('express-handlebars')
 
 var db = require('./config/connection');
+var session=require('express-session')
 
 
 var userRouter = require('./routes/user');
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
+app.use(session({secret:"Key",cookie:{maxAge:60000}}))
 db.connect((err)=>{
   if(err) console.log("database error"+err);
   else console.log("database connected");
